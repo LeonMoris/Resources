@@ -37,8 +37,19 @@
 # Github: https://github.com/Joy-Leon                                                                                                             #
 #-------------------------------------------------------------------------------------------------------------------------------------------------#
 
-$MYPRINTER = "hostname" 
+#Change hostname with the name of your printer
+$PrinterHostname = "Hostname"
 
-add-printer -connectionname "$MYPRINTER"
-$PRINTERTMP = (Get-CimInstance -ClassName CIM_Printer | WHERE {$_.Name -eq $MYPRINTER}[0])
-$PRINTERTMP | Invoke-CimMethod -MethodName SetDefaultPrinter | Out-Null
+if (!(get-printer $PrinterHostname)) {
+    try {
+        add-printer -connectionname $PrinterHostname
+        $PrinterHostname = (Get-CimInstance -ClassName CIM_Printer | WHERE {$_.Name -eq $PrinterHostname}[0])
+        $PrinterHostname | Invoke-CimMethod -MethodName SetDefaultPrinter | Out-Null
+    }
+    catch {
+        write-warning $Error[0]
+    }
+}
+else {
+    write-host "$PrinterHostname already exists."
+}
