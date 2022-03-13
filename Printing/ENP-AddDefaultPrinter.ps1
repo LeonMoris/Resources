@@ -34,7 +34,7 @@
 #                                                                                                                                                 #
 # Created by Leon Moris                                                                                                                           #
 # Website: www.switchtojoy.be                                                                                                                     #
-# Github: https://github.com/Joy-Leon                                                                                                             #
+# Github: https://github.com/LeonMoris                                                                                                             #
 #-------------------------------------------------------------------------------------------------------------------------------------------------#
 
 #Change hostname with the name of your printer
